@@ -13,6 +13,8 @@ services:
       - database
     volumes:
       - ${DOCUMENT_ROOT-./www}:/var/www/html:rw
+      - ${APP_FLOREX-./www/florex}:/var/www/html/florex
+      - ${APP_FLOREX_ADMIN-./www/florex_admin}:/var/www/html/florex_admin
       - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/php.ini
       - ${SSL_DIR-./config/ssl}:/etc/apache2/ssl/
       - ${VHOSTS_DIR-./config/vhosts}:/etc/apache2/sites-enabled
@@ -20,6 +22,8 @@ services:
       - ${XDEBUG_LOG_DIR-./logs/xdebug}:/var/log/xdebug
     environment:
       APACHE_DOCUMENT_ROOT: ${APACHE_DOCUMENT_ROOT-/var/www/html}
+      APACHE_FLOREX_ROOT: ${APACHE_FLOREX_ROOT-/var/www/html}
+      APACHE_FLOREX_ADMIN_ROOT: ${APACHE_FLOREX_ADMIN_ROOT-/var/www/html}
       PMA_PORT: ${HOST_MACHINE_PMA_PORT}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
